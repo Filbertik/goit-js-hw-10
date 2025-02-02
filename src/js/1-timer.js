@@ -11,6 +11,7 @@ const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
 let cdInterval = null;
+
 let userSelectedDate = null;
 
 const options = {
@@ -38,21 +39,18 @@ flatpickr(dateTimePicker, options);
 
 startButton.addEventListener('click', () => {
   if (!userSelectedDate) return;
-
   startButton.disabled = true;
   dateTimePicker.disabled = true;
 
   cdInterval = setInterval(() => {
     const currentTime = new Date();
     const remainingTime = userSelectedDate - currentTime;
-
     if (remainingTime <= 0) {
       clearInterval(cdInterval);
       updateTimerDisplay(0, 0, 0, 0);
       dateTimePicker.disabled = false;
       return;
     }
-
     const { days, hours, minutes, seconds } = convertMs(remainingTime);
     updateTimerDisplay(days, hours, minutes, seconds);
   }, 1000);
