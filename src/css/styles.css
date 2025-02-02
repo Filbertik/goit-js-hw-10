@@ -10,6 +10,7 @@
 @import url('./container.css');
 @import url('./animations.css');
 @import url('./1-timer.css');
+@import url('./2-snackbar.css');
 
 /* Sections style */
 @import url('./header.css');

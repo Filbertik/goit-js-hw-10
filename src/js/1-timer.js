@@ -10,7 +10,7 @@ const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
-let countdownInterval = null;
+let cdInterval = null;
 let userSelectedDate = null;
 
 const options = {
@@ -42,12 +42,12 @@ startButton.addEventListener('click', () => {
   startButton.disabled = true;
   dateTimePicker.disabled = true;
 
-  countdownInterval = setInterval(() => {
+  cdInterval = setInterval(() => {
     const currentTime = new Date();
     const remainingTime = userSelectedDate - currentTime;
 
     if (remainingTime <= 0) {
-      clearInterval(countdownInterval);
+      clearInterval(cdInterval);
       updateTimerDisplay(0, 0, 0, 0);
       dateTimePicker.disabled = false;
       return;
